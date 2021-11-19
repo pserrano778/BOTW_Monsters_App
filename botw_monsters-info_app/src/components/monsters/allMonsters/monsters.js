@@ -29,7 +29,8 @@ export default function Monsters() {
             <SearchBar value={filter} onChange={setFilter}/>
             <MonstersList monsters={allMonsters.map(monster => {
                 return {name: monster.name, src:monster.image}
-            }).filter(monster => monster.name.toLowerCase().includes(filter.toLowerCase())).sort((a, b) => { // Sort array
+                // Apply Filter and Sort the array
+            }).filter(monster => monster.name.toLowerCase().includes(filter.toLowerCase())).sort((a, b) => {
 
                 // a < b
                 if(a.name<b.name) return -1;
