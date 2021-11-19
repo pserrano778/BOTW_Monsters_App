@@ -5,8 +5,10 @@ export default function MonstersPeview({name, src}) {
 
   return (
     <div>
-        <img src={src} />
-        <p>{name}</p>
+        <figure>
+            <img src={src} alt={name}/>
+            <figcaption><a href="#">{name}</a></figcaption>
+        </figure>
     </div>
   )
 }
