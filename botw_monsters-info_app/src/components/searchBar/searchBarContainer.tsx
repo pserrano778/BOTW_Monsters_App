@@ -9,7 +9,7 @@ interface Event{
     target: {value: string};
 }
   
-// Function that display the searchBar and Track the filter
+// Function that Track the filter
 const SearchBarContainer: React.FC<Props> = (props) => {
     const {value, onChange} = props;
 

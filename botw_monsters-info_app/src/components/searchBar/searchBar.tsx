@@ -12,7 +12,7 @@ interface Event{
   target: {value: string};
 }
 
-// Function that display the searchBar and Track the filter
+// Function that display the searchBar
 const SearchBar: React.FC<Props> = (props) => {
   const {value, onChange} = props;
 
