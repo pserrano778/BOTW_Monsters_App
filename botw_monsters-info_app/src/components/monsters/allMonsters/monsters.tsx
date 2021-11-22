@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
-import MonstersList from "./monstersList.js"
-import SearchBar from "../../searchBar/searchBar.js"
+import MonstersList from "./monstersList"
+import SearchBarContainer from "../../searchBar/searchBarContainer"
+
+// Monster interface
+interface Monster {
+    id: number;
+    name: string;
+    image: string;
+}
+
 // Function that controls all monsters
-export default function Monsters() {
+const Monsters = () => {
 
     // Use state for allMonsters
-    const[allMonsters, setAllMonsters] = useState([]);
+    const[allMonsters, setAllMonsters] = useState([] as Monster[]);
 
     // Filter
     const[filter, setFilter] = useState("");
@@ -26,9 +34,9 @@ export default function Monsters() {
 
     return (
         <div>
-            <SearchBar value={filter} onChange={setFilter}/>
+            <SearchBarContainer value={filter} onChange={setFilter}/>
             <MonstersList monsters={allMonsters.map(monster => {
-                return {name: monster.name, src:monster.image}
+                return { id: monster.id, name: monster.name, image:monster.image}
                 // Apply Filter and Sort the array
             }).filter(monster => monster.name.toLowerCase().includes(filter.toLowerCase())).sort((a, b) => {
 
@@ -45,3 +53,5 @@ export default function Monsters() {
   );
 
 }
+
+export default Monsters;
