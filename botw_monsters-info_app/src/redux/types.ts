@@ -66,7 +66,7 @@ export type getMonsterAction = {
 
 export type resetMonsterAction = {
     type: 'RESET_MONSTER';
-    payload: never;
+    payload?: never;
 }
 
 // Export the types of actions
