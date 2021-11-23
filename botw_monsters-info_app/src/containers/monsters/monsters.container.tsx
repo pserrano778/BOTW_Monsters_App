@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import SearchBarContainer from "../searchBar/searchBarContainer";
+import SearchBarContainer from "../searchBar/searchBar.container";
 import MonstersList from "../../components/monsters/monstersList.component";
 import { getAllMonsters, filterAllMonsters } from "../../redux/actions/monsters";
 import { Monsters } from '../../redux/types'
