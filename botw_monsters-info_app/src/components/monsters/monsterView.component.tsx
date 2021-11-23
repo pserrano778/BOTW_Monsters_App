@@ -15,7 +15,7 @@ const MonsterView: React.FC<Props> = (props) => {
     const description = props.description as string;
     const drops = props.drops as [];
     const src = props.src as string;
-console.log(props.drops)
+
     return (
         <div>
         <figure>
@@ -23,11 +23,10 @@ console.log(props.drops)
             <img src={src} alt={name}/>
         </figure>
         <p>{description}</p>
-        <p>Locations: {locations.join(", ")}</p>
-        {drops.length > 0 && <p>Drops: {drops.join(", ")}</p>}
+        {locations && locations.length > 0 && <p>Locations: {locations.join(", ")}</p>}
+        {drops && drops.length > 0 && <p>Drops: {drops.join(", ")}</p>}
     </div>
   );
-    
 }
 
 export default MonsterView;

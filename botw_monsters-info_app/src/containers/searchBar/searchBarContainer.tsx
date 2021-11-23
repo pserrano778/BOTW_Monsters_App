@@ -1,4 +1,4 @@
-import SearchBar from './searchBar'
+import SearchBar from '../../components/searchBar/searchBar.component'
 
 interface Props{
     value: string;

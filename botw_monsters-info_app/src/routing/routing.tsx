@@ -3,9 +3,8 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-
-import Monsters from '../monsters/allMonsters/monsters'
-import MonsterData from '../monsters/monster/monsterData'
+import Monsters from '../containers/monsters/monstersContainer'
+import MonsterData from '../containers/monsters/monsterDataContainer'
 
 const Routing = () => {
     // Routing
