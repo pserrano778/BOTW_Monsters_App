@@ -1,6 +1,10 @@
 import React from "react";
-import MonsterPreview from "./monsterPreview.component"
-
+import MonsterPreview from "./monsterPreview.component";
+import Container from "react-bootstrap/Container";
+import ListGroup from "react-bootstrap/ListGroup";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Stack from "react-bootstrap/Stack";
 // Monster interface
 interface Monster {
   id: number;
@@ -22,9 +26,15 @@ const MonstersList: React.FC<Props> = (props) => {
     return <p>There is no monster that matches the filter.</p>;
   }
   return (
-      <ul>
-          {monsters.map((monster) => <MonsterPreview key={monster.id} name={monster.name} src={monster.image} />)}
-      </ul>
+    <Container>
+      <Row>
+        <Col>
+        
+            {monsters.map((monster) => <MonsterPreview key={monster.id} name={monster.name} src={monster.image} />)}
+       
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

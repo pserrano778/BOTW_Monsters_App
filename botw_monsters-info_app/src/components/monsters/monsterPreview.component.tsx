@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
+import Figure from "react-bootstrap/Figure";
+import ListGroup from "react-bootstrap/ListGroup";
 // Props interface
 interface Props {
   name: string;
@@ -13,11 +14,19 @@ const MonstersPeview: React.FC<Props> = (props) => {
   //Return the preview with a link to the monster data
   return (
     <div>
-        <figure>
-        <Link to={"/"+name.replace(" ", "_")}><img src={src} alt={name}/></Link>
-            <figcaption><Link to={"/"+name.replace(" ", "_")}>{name}</Link></figcaption>
-        </figure>
-        
+      <Figure>
+        <Link to={"/"+name.replace(" ", "_")}>
+          <Figure.Image
+            alt={name}
+            src={src}
+          />
+        </Link>
+        <Link to={"/"+name.replace(" ", "_")}>
+          <Figure.Caption>
+            {name}
+          </Figure.Caption>
+        </Link>
+      </Figure>
     </div>
   )
 }
