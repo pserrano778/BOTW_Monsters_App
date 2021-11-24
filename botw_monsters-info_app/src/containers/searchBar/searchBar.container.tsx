@@ -1,26 +1,25 @@
 import SearchBar from '../../components/searchBar/searchBar.component'
+import {selectSearchFilter, setSearchFilter} from "../../redux/slices/searchFilterSlice"
+import { useDispatch, useSelector } from "react-redux";
 
-interface Props{
-    value: string;
-    onChange: (s: string) => void;
-}
-
+// Event interface
 interface Event{
     target: {value: string};
 }
   
 // Function that Track the filter
-const SearchBarContainer: React.FC<Props> = (props) => {
-    const {value, onChange} = props;
+const SearchBarContainer = () => {
+    const dispatch = useDispatch();
+    const searchFilter = useSelector(selectSearchFilter);
 
     // Change the value
     const handleChange = (e: Event) => {
-        onChange(e.target.value)
+        dispatch(setSearchFilter(e.target.value))
     }
 
     // Return a searchBar
     return (
-        <SearchBar value={value} onChange={handleChange}/>
+        <SearchBar value={searchFilter} onChange={handleChange}/>
     )
 }
 export default SearchBarContainer;

@@ -1,52 +1,37 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import MonsterView from "../../components/monsters/monsterView.component";
 import {useParams} from "react-router-dom";
-import { getMonster, resetMonster } from "../../redux/actions/monsters"
-import { MonsterDetails } from '../../redux/types'
-import { connect, ConnectedProps } from 'react-redux'
+import { getMonster } from "../../redux/actions/monster"
+import { useDispatch, useSelector } from 'react-redux'
+import {selectMonster, clearMonster, isLoadingMonster} from "../../redux/slices/monsterSlice"
 
-// Props interface
-interface Props extends PropsFromRedux {
-    monsterDetails: MonsterDetails
-    getMonster: (name: string) => void
-    resetMonster: () => void
-}
 
-// State interface
-interface State {
-    monsterDetails: MonsterDetails
-}
+const MonsterDataContainer = () => {
 
-const MonsterDataContainer: React.FC<Props> = (props) => {
-
-    // Use state for allMonsterInfo
-    const{monsterDetails, getMonster, resetMonster} = props;
+    // Get the monster info
     let name = useParams().name as string;
+    const dispatch = useDispatch();
+    const monsterDetails = useSelector(selectMonster);
 
-    // Use effect to get the info the first time
+    // Use effect to get the info
     useEffect(() => {
-        getMonster(name);
+        //Dispatch the action
+        dispatch(getMonster(name));
         return () => {
-            resetMonster();
+            // Clear when finish
+            dispatch(clearMonster());
         };
-    }, [name, getMonster, resetMonster])
+    }, [name, dispatch])
 
     // Check if data has been loaded
-    let display = <p>Loading Data</p>;
-    if(monsterDetails && monsterDetails.name!="") {
-        display = <MonsterView name={monsterDetails.name} locations={monsterDetails.locations} description={monsterDetails.description} drops={monsterDetails.drops} src={monsterDetails.image}/>;
+    const isLoading  = useSelector(isLoadingMonster);
+    if(isLoading) {
+        return <p>Loading Data</p>
     }
-    return display;
+
+    return (
+        <MonsterView name={monsterDetails.name} locations={monsterDetails.locations} description={monsterDetails.description} drops={monsterDetails.drops} src={monsterDetails.image}/>
+    )
 }
 
-// Map the current state to props
-const mapStateToProps = (state: State) => ({
-    monsterDetails: state.monsterDetails
-})
-
-// Connect
-const connector = connect(mapStateToProps, { getMonster, resetMonster })
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-// Export the connector
-export default connector(MonsterDataContainer);
+export default MonsterDataContainer;

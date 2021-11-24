@@ -1,14 +1,15 @@
-import { applyMiddleware, createStore } from 'redux';
-import thunk, { ThunkMiddleware } from 'redux-thunk';
-import monstersReducer from './reducers/monsters';
-import {State, Action} from './types';
-
-const INITIAL_STATE: State = {monsters: [], monsterDetails: {id: -1, name: "", image: "", description: "", locations: [], drops: []}, filter: ""}
-const middleware = [thunk as ThunkMiddleware<State, Action>]
+import monstersReducer from './slices/monstersSlice';
+import searchFilterReducer from './slices/searchFilterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import monsterReducer from './slices/monsterSlice';
 
 // Create the store
-export default createStore(
-    monstersReducer,
-    INITIAL_STATE,
-    applyMiddleware(...middleware)
-)
+const store = configureStore({
+    reducer: {
+      allMonsters: monstersReducer,
+      searchFilter: searchFilterReducer,
+      monsterDetails: monsterReducer
+    }
+  });
+  export type RootState = ReturnType<typeof store.getState>;
+export default store;
