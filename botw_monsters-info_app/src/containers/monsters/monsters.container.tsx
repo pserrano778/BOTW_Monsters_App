@@ -17,7 +17,7 @@ export const MonstersContainer = () => {
 
     // Check if data has been loaded
     const isLoading  = useSelector(isLoadingAllMonsters);
-    if(isLoading) {
+    if(isLoading && allMonstersFiltered.length === 0) {
         return <p>Loading Data</p>
     }
 
@@ -37,7 +37,7 @@ export const MonstersContainer = () => {
 
                 // Equal
                 else return 0;
-            })} />;
+            })} />
         </div>
   );
 

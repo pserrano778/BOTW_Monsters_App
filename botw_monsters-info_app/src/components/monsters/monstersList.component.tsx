@@ -17,15 +17,14 @@ interface Props {
 // Function that controls all monsters
 const MonstersList: React.FC<Props> = (props) => {
   const { monsters } = props
-  let display = <p>There is no monster that matches the filter.</p>
 
-  if(monsters && monsters.length>0){
-    display = <ul>
-                  {monsters.map((monster) => <MonsterPreview key={monster.id} name={monster.name} src={monster.image} />)}
-              </ul>
+  if(!monsters || monsters.length === 0){
+    return <p>There is no monster that matches the filter.</p>;
   }
   return (
-    display
+      <ul>
+          {monsters.map((monster) => <MonsterPreview key={monster.id} name={monster.name} src={monster.image} />)}
+      </ul>
   )
 }
 
