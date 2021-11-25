@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Figure from "react-bootstrap/Figure";
-import ListGroup from "react-bootstrap/ListGroup";
+import Col from "react-bootstrap/Col";
+
 // Props interface
 interface Props {
   name: string;
@@ -13,12 +14,13 @@ const MonstersPeview: React.FC<Props> = (props) => {
   const {name, src} = props;
   //Return the preview with a link to the monster data
   return (
-    <div>
+    <Col>
       <Figure>
         <Link to={"/"+name.replace(" ", "_")}>
           <Figure.Image
             alt={name}
             src={src}
+ 
           />
         </Link>
         <Link to={"/"+name.replace(" ", "_")}>
@@ -27,7 +29,7 @@ const MonstersPeview: React.FC<Props> = (props) => {
           </Figure.Caption>
         </Link>
       </Figure>
-    </div>
+    </Col>
   )
 }
 

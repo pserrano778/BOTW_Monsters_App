@@ -1,10 +1,7 @@
 import React from "react";
 import MonsterPreview from "./monsterPreview.component";
 import Container from "react-bootstrap/Container";
-import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Stack from "react-bootstrap/Stack";
 // Monster interface
 interface Monster {
   id: number;
@@ -27,12 +24,8 @@ const MonstersList: React.FC<Props> = (props) => {
   }
   return (
     <Container>
-      <Row>
-        <Col>
-        
+      <Row xs="1" sm="2" md="3" lg="4" xl="5" xxl="6" className="justify-content-center">
             {monsters.map((monster) => <MonsterPreview key={monster.id} name={monster.name} src={monster.image} />)}
-       
-        </Col>
       </Row>
     </Container>
   )
