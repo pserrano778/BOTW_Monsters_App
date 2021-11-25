@@ -1,4 +1,4 @@
-import SearchBar from '../../components/searchBar/searchBar.component'
+import SearchBar from "../../components/searchBar/searchBar.component"
 import {selectSearchFilter, setSearchFilter} from "../../redux/slices/searchFilterSlice"
 import { useDispatch, useSelector } from "react-redux";
 

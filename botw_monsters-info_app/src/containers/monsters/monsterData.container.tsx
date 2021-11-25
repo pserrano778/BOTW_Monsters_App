@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import MonsterView from "../../components/monsters/monsterView/monsterView.component";
 import {useParams} from "react-router-dom";
 import { getMonster } from "../../redux/actions/monster"
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux"
 import {selectMonster, clearMonster, isLoadingMonster} from "../../redux/slices/monsterSlice"
 
 

@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import SearchBarContainer from "../searchBar/searchBar.container";
+import AddMonsterButtonContainer from "./addMonsterButton.container";
 import MonstersList from "../../components/monsters/monstersList/monstersList.component";
 import { getAllMonsters } from "../../redux/actions/monsters";
 import {selectAllMonstersFiltered, isLoadingAllMonsters} from "../../redux/slices/monstersSlice"
 import { useDispatch, useSelector } from "react-redux";
 
 // Function that controls all monsters
-export const MonstersContainer = () => {
+const MonstersContainer = () => {
     const dispatch = useDispatch();
     const allMonstersFiltered = useSelector(selectAllMonstersFiltered);
 
@@ -23,7 +24,8 @@ export const MonstersContainer = () => {
 
     return (
         <div>
-            <SearchBarContainer/>
+            <AddMonsterButtonContainer />
+            <SearchBarContainer />
             <MonstersList monsters={allMonstersFiltered.map(monster => {
                 return { id: monster.id, name: monster.name, image:monster.image}
                 // Apply Filter and Sort the array
@@ -43,4 +45,4 @@ export const MonstersContainer = () => {
 
 }
 
-
+export default MonstersContainer;

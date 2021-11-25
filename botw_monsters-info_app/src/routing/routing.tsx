@@ -3,8 +3,9 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import {MonstersContainer} from '../containers/monsters/monsters.container'
-import MonsterData from '../containers/monsters/monsterData.container'
+import MonstersContainer from '../containers/monsters/monsters.container'
+import MonsterDataContainer from '../containers/monsters/monsterData.container'
+import AddMonsterContainer from '../containers/monsters/addMonster.container'
 
 const Routing = () => {
     // Routing
@@ -16,7 +17,9 @@ const Routing = () => {
                 {/* All monster List route */}
                 <Route path={"/"} element={<MonstersContainer/>}></Route>
                 {/* Specific monster info */}
-                <Route path={"/:name" } element={<MonsterData/>}></Route>
+                <Route path={"/:name"} element={<MonsterDataContainer/>}></Route>
+                {/* Add a new monster */}
+                <Route path={"/addMonster"} element={<AddMonsterContainer/>}></Route>
               </Routes>
             </div>
           </Router>
