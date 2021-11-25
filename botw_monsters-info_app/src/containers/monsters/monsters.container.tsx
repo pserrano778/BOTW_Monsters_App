@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import SearchBarContainer from "../searchBar/searchBar.container";
-import MonstersList from "../../components/monsters/monstersList.component";
+import MonstersList from "../../components/monsters/monstersList/monstersList.component";
 import { getAllMonsters } from "../../redux/actions/monsters";
 import {selectAllMonstersFiltered, isLoadingAllMonsters} from "../../redux/slices/monstersSlice"
 import { useDispatch, useSelector } from "react-redux";

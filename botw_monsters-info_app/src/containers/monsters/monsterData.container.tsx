@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import MonsterView from "../../components/monsters/monsterView.component";
+import MonsterView from "../../components/monsters/monsterView/monsterView.component";
 import {useParams} from "react-router-dom";
 import { getMonster } from "../../redux/actions/monster"
 import { useDispatch, useSelector } from 'react-redux'

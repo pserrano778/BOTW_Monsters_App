@@ -1,7 +1,8 @@
 import React from "react";
-import MonsterPreview from "./monsterPreview.component";
+import MonsterPreview from "../monsterPreview/monsterPreview.component";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Nav from "react-bootstrap/Nav";
 // Monster interface
 interface Monster {
   id: number;
@@ -23,11 +24,13 @@ const MonstersList: React.FC<Props> = (props) => {
     return <p>There is no monster that matches the filter.</p>;
   }
   return (
-    <Container>
-      <Row xs="1" sm="2" md="3" lg="4" xl="5" xxl="6" className="justify-content-center">
-            {monsters.map((monster) => <MonsterPreview key={monster.id} name={monster.name} src={monster.image} />)}
-      </Row>
-    </Container>
+    <Nav>
+      <Container>
+        <Row xs="1" sm="2" md="3" lg="4" xl="5" xxl="6" className="justify-content-center">
+          {monsters.map((monster) => <MonsterPreview key={monster.id} name={monster.name} src={monster.image} />)}
+        </Row>
+      </Container>
+    </Nav>
   )
 }
 
