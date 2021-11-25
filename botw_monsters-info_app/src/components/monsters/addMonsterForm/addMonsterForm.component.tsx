@@ -72,7 +72,7 @@ const addMonsterFromComponent: React.FC<Props> = (props) => {
                 </Col>
             </Form.Group>
 
-            <Button variant="primary" type="submit" onSubmit={onSubmit}>
+            <Button variant="primary" onClick={onSubmit}>
                 Submit
             </Button>
         </Form>

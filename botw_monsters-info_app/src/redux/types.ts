@@ -1,7 +1,8 @@
 const ALL_MONSTERS = 'ALL_MONSTERS';
+const MONSTER = 'MONSTERS';
 export const GET_ALL_MONSTERS = ALL_MONSTERS + '/GET_ALL_MONSTERS';
-export const ADD_MONSTER = 'ADD_MONSTER';
-export const GET_MONSTER = ALL_MONSTERS + 'GET_MONSTER';
+export const ADD_MONSTER = ALL_MONSTERS + 'ADD_MONSTER';
+export const GET_MONSTER = MONSTER + 'GET_MONSTER';
 
 // Monster
 export type Monster = {
@@ -16,8 +17,8 @@ export type MonsterDetails = {
     name: string;
     image: string;
     description: string;
-    locations: [];
-    drops: [];
+    locations: string[];
+    drops: string[];
 }
 
 export type MonsterState = {
@@ -35,4 +36,6 @@ export type MonstersState =
     monsters: Monsters;
     isLoading: boolean;
     hasError: boolean;
+    isSending: boolean;
+    hasSendingError: boolean;
 }

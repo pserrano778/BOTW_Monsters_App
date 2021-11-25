@@ -3,9 +3,9 @@ import React from "react";
 // Props interface
 interface Props {
     name: string;
-    locations: [];
+    locations: string[];
     description: string;
-    drops: [];
+    drops: string[];
     src: string;
 }
 // Cambiar con redux

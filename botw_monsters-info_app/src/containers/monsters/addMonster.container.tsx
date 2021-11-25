@@ -1,6 +1,7 @@
 import {useState} from "react";
 import AddMonsterFrom from "../../components/monsters/addMonsterForm/addMonsterForm.component"
-
+import {addMonster} from "../../redux/actions/monsters";
+import { useDispatch} from "react-redux";
 // MonsterDetails
 interface MonsterDetails {
     id: number;
@@ -25,6 +26,8 @@ const AddMonsterContainer = () => {
     locations: "",
     drops: "",});
     
+    const dispatch = useDispatch();
+
     // When there is a change 
     const handleChange = (e: Event) => {
         const {name, value} = e.target;
@@ -36,18 +39,16 @@ const AddMonsterContainer = () => {
 
     // When data is submited
     const handleSubmit = () => {
-        console.log("SUBMIT")
         // Create monster Object to post it
         const newMonster = {
             id: monsterDetails.id,
             name: monsterDetails.name,
             image: monsterDetails.image,
             description: monsterDetails.description,
-            location: monsterDetails.locations.split(","),
-            drops: monsterDetails.drops.split(",")
+            locations: monsterDetails.locations.split(",") as string[],
+            drops: monsterDetails.drops.split(",") as string[]
         }
-
-        console.log(newMonster)
+        dispatch(addMonster(newMonster)) 
     }
 
     return (

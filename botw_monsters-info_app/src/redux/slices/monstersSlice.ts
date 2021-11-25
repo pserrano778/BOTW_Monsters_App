@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { MonstersState, Monster } from '../types'
-import { getAllMonsters } from "../actions/monsters"
+import { addMonster, getAllMonsters } from "../actions/monsters"
 import { RootState } from "../index"
 import { selectSearchFilter } from "./searchFilterSlice";
 
@@ -8,7 +8,9 @@ import { selectSearchFilter } from "./searchFilterSlice";
 const initialState =  {
     monsters: [],
     isLoading: false,
-    hasError: false
+    hasError: false,
+    isSending: false,
+    hasSendingError: false
 } as MonstersState
 
 // Create the slice
@@ -31,6 +33,18 @@ export const monstersSlice = createSlice({
         state.isLoading = true;
         state.hasError = false;
     })
+    builder.addCase(addMonster.fulfilled, (state, { payload }) => {
+        state.isSending = false;
+        state.hasSendingError = false;
+    })
+    builder.addCase(addMonster.rejected, (state, action) => {
+        state.isSending = false;
+        state.hasSendingError = true;
+    })
+    builder.addCase(addMonster.pending, (state, action) => {
+        state.isSending = true;
+        state.hasSendingError = false;
+    })
   },
 })
 
@@ -43,5 +57,7 @@ export const selectAllMonstersFiltered = (state: RootState) => {
 
     return allMonsters.filter((monster: Monster) => monster.name.toLowerCase().includes(searchFilter.toLowerCase()));
 };
+
+export const addNewMonster = (state: RootState) => {};
 
 export default monstersSlice.reducer;
