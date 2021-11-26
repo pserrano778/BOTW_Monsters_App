@@ -1,7 +1,10 @@
 const express = require('express')
 const cors = require('cors');
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://BOTW_App_Admn:PEwapeJGS4o24ac9xa@cluster0.l54jd.mongodb.net/BOTW_Monsters_App?retryWrites=true&w=majority";
 
-
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+let monstersCollection;
 const app = express()
 
 // configure the app to to use json and urlencoded
@@ -15,24 +18,52 @@ app.use(cors({
 
 const port = 4000
 
+// Connect to DB
+const connectDB = client.connect(err => {
+    monstersCollection = client.db("BOTW_Monsters_App").collection("monsters");
+});
+
+// Check if the server is connected to the DB
+const checkDBConnection = () => {
+    // If the server is not connected, connect to DB
+    if(!client && !client.topology && !client.topology.isConnected()){
+        connectDB();
+    }
+}
+
 app.post('/addMonster', (req, res) => {
-    console.log('Got body:', req.body);
+    let drops;
+    if((req.body.drops) === ""){
+        drops = [];
+    }
+    else{
+        drops = req.body.drops.split(",");
+    }
 
     const newMonster = {
-        id: req.body.id,
         name: req.body.name,
         image: req.body.image,
         description: req.body.description,
         locations: req.body.locations.split(","),
-        drops: req.body.drops.split(",")
+        drops: drops
     }   
-    console.log(newMonster)
+
+    checkDBConnection();
+
+    monstersCollection.insertOne(newMonster);
     res.sendStatus(200);
 });
 
-app.get('/', (req, res) => {
-    console.log('Root');
-    res.sendStatus(200);
+app.get('/getMonsters', (req, res) => {
+    checkDBConnection();
+    monstersCollection.find().toArray((error, result) => {
+        if (error) {
+            return res.status(500).send(error);
+        }
+        else {
+            return res.status(200).send(result)
+        }
+    })
 });
 
 app.listen(port, () => {
