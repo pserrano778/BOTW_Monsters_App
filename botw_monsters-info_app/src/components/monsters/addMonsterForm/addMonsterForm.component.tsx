@@ -2,6 +2,8 @@ import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
+
+
 // MonsterDetails
 interface MonsterDetails {
     id: number;
@@ -21,15 +23,15 @@ interface Event{
 interface Props {
     value: MonsterDetails,
     onChange: (e: Event) => void
-    onSubmit: () => void
+    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
-const addMonsterFromComponent: React.FC<Props> = (props) => {
+const addMonsterFormComponent: React.FC<Props> = (props) => {
 
     const {value, onChange, onSubmit} = props
-
+  
     return (
-        <Form>
+        <Form onSubmit={onSubmit}>
             <Form.Group as={Row}>
                 <Form.Label column sm={2}>Monster ID</Form.Label>
                 <Col sm={10}>
@@ -72,11 +74,11 @@ const addMonsterFromComponent: React.FC<Props> = (props) => {
                 </Col>
             </Form.Group>
 
-            <Button variant="primary" onClick={onSubmit}>
+            <Button variant="primary" type={"submit"} >
                 Submit
             </Button>
         </Form>
     )
 }
 
-export default addMonsterFromComponent;
+export default addMonsterFormComponent;

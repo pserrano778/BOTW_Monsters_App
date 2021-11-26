@@ -1,7 +1,9 @@
 import {useState} from "react";
-import AddMonsterFrom from "../../components/monsters/addMonsterForm/addMonsterForm.component"
+import AddMonsterForm from "../../components/monsters/addMonsterForm/addMonsterForm.component"
 import {addMonster} from "../../redux/actions/monsters";
 import { useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 // MonsterDetails
 interface MonsterDetails {
     id: number;
@@ -27,7 +29,8 @@ const AddMonsterContainer = () => {
     drops: "",});
     
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
+    
     // When there is a change 
     const handleChange = (e: Event) => {
         const {name, value} = e.target;
@@ -38,7 +41,9 @@ const AddMonsterContainer = () => {
     }
 
     // When data is submited
-    const handleSubmit = () => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        //Avoid to refresh the page
+        e.preventDefault();
         // Create monster Object to post it
         const newMonster = {
             id: monsterDetails.id,
@@ -48,11 +53,16 @@ const AddMonsterContainer = () => {
             locations: monsterDetails.locations,
             drops: monsterDetails.drops
         }
-        dispatch(addMonster(newMonster)) 
+
+        // Dispatch addMonster action
+        dispatch(addMonster(newMonster))
+        
+        // Navigate to previous page
+        navigate("/")
     }
 
     return (
-        <AddMonsterFrom value={monsterDetails} onChange={handleChange} onSubmit={handleSubmit}/>
+        <AddMonsterForm value={monsterDetails} onChange={handleChange} onSubmit={handleSubmit}/>
     )
 }
   
