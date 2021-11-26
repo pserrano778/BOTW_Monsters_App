@@ -45,8 +45,8 @@ const AddMonsterContainer = () => {
             name: monsterDetails.name,
             image: monsterDetails.image,
             description: monsterDetails.description,
-            locations: monsterDetails.locations.split(",") as string[],
-            drops: monsterDetails.drops.split(",") as string[]
+            locations: monsterDetails.locations,
+            drops: monsterDetails.drops
         }
         dispatch(addMonster(newMonster)) 
     }

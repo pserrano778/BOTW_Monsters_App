@@ -2,7 +2,6 @@ import { createAsyncThunk} from "@reduxjs/toolkit";
 import {
     GET_ALL_MONSTERS,
     ADD_MONSTER,
-    MonsterDetails
 } from '../types'
 
 // Action created with createAsyncThunk that get all the Monsters
@@ -18,12 +17,15 @@ export const getAllMonsters = createAsyncThunk(
 // Action created with createAsyncThunk that post a new monster
 export const addMonster = createAsyncThunk(
     ADD_MONSTER,
-    async (monster: MonsterDetails) => {
+    async (monster: {}) => {
+
         const requestOptions = {
             method: 'POST',
-            mode: 'no-cors' as RequestMode,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(monster)
+            headers: {
+              'Accept': '*/*',
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(monster as {})
         }
 
         const response = await fetch('http://192.168.1.39:4000/addMonster', requestOptions);
