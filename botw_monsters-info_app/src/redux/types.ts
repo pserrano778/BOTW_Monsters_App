@@ -6,14 +6,12 @@ export const GET_MONSTER = MONSTER + 'GET_MONSTER';
 
 // Monster
 export type Monster = {
-    id: number;
     name: string;
     image: string;
 }
 
 // MonsterDetails
 export type MonsterDetails = {
-    id: number;
     name: string;
     image: string;
     description: string;

@@ -8,9 +8,9 @@ import {
 export const getAllMonsters = createAsyncThunk(
     GET_ALL_MONSTERS,
     async () => {
-        const response = await fetch('https://botw-compendium.herokuapp.com/api/v2/category/monsters');
+        const response = await fetch('http://192.168.1.39:4000/getAllMonsters');
         const json = await response.json();
-        return json.data;
+        return json;
     }
 );
 

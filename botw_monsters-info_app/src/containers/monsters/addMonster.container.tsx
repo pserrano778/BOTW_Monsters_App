@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 // MonsterDetails
 interface MonsterDetails {
-    id: number;
     name: string;
     image: string;
     description: string;
@@ -21,7 +20,7 @@ interface Event{
 
 const AddMonsterContainer = () => {
 
-    const [monsterDetails, setMonsterDetails] = useState<MonsterDetails>({id: 0,
+    const [monsterDetails, setMonsterDetails] = useState<MonsterDetails>({
     name: "",
     image: "",
     description: "",
@@ -46,7 +45,6 @@ const AddMonsterContainer = () => {
         e.preventDefault();
         // Create monster Object to post it
         const newMonster = {
-            id: monsterDetails.id,
             name: monsterDetails.name,
             image: monsterDetails.image,
             description: monsterDetails.description,

@@ -27,15 +27,18 @@ const MonstersContainer = () => {
             <AddMonsterButtonContainer />
             <SearchBarContainer />
             <MonstersList monsters={allMonstersFiltered.map(monster => {
-                return { id: monster.id, name: monster.name, image:monster.image}
+                return { name: monster.name, image:monster.image}
                 // Apply Filter and Sort the array
             }).sort((a, b) => {
 
+                // Compare using lowerCase
+                const aName = a.name.toLowerCase();
+                const bName = b.name.toLowerCase();
                 // a < b
-                if(a.name<b.name) return -1;
+                if(aName<bName) return -1;
 
                 // a > b
-                else if(a.name>b.name) return 1;
+                else if(aName>bName) return 1;
 
                 // Equal
                 else return 0;

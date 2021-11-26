@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button"
 
 // MonsterDetails
 interface MonsterDetails {
-    id: number;
     name: string;
     image: string;
     description: string;
@@ -32,13 +31,6 @@ const addMonsterFormComponent: React.FC<Props> = (props) => {
   
     return (
         <Form onSubmit={onSubmit}>
-            <Form.Group as={Row}>
-                <Form.Label column sm={2}>Monster ID</Form.Label>
-                <Col sm={10}>
-                    <Form.Control type="number" placeholder="Enter monster ID" onChange={onChange} name="id" value={value.id} min="0" required/>
-                </Col>
-            </Form.Group>
-
             <Form.Group as={Row}>
                 <Form.Label column sm={2}>Name</Form.Label>
                 <Col sm={10}>

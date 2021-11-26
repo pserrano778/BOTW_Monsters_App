@@ -31,6 +31,7 @@ const checkDBConnection = () => {
     }
 }
 
+// Add monster Endpoint
 app.post('/addMonster', (req, res) => {
     let drops;
     if((req.body.drops) === ""){
@@ -54,9 +55,24 @@ app.post('/addMonster', (req, res) => {
     res.sendStatus(200);
 });
 
-app.get('/getMonsters', (req, res) => {
+// Get all monsters Endpoint
+app.get('/getAllMonsters', (req, res) => {
     checkDBConnection();
     monstersCollection.find().toArray((error, result) => {
+        if (error) {
+            return res.status(500).send(error);
+        }
+        else {
+            return res.status(200).send(result)
+        }
+    })
+});
+
+// Get monster details Endpoint
+app.get('/getMonster/*', (req, res) => {
+    const monster = req.url.replace('/getMonster/', '').replace("_", " ");
+    checkDBConnection();
+    monstersCollection.findOne({"name": monster}, (error, result) => {
         if (error) {
             return res.status(500).send(error);
         }

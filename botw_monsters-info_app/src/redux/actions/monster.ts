@@ -7,8 +7,8 @@ import {
 export const getMonster = createAsyncThunk(
     GET_MONSTER,
     async (name: string) => {
-        const response = await fetch('https://botw-compendium.herokuapp.com/api/v2/entry/' + name.replace("_", " "));
+        const response = await fetch('http://192.168.1.39:4000/getMonster/' + name.replace(" ", "_"));
         const json = await response.json();
-        return json.data;
+        return json;
     }
 );

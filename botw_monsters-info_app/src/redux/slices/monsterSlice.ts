@@ -6,7 +6,6 @@ import { RootState } from "../index"
 // Set the initial state
 const initialState = {
     monster: {
-        id: -1,
         name: "",
         image: "",
         description: "",
@@ -27,11 +26,10 @@ const monsterSlice = createSlice({
         // Bulder callback to set the advanced Reducers
         builder.addCase(getMonster.fulfilled, (state, { payload }) => {
             state.monster = {
-                id: payload.id,
                 name: payload.name,
                 image: payload.image,
                 description: payload.description,
-                locations: payload.common_locations,
+                locations: payload.locations,
                 drops: payload.drops
             };
             state.isLoading = false;
