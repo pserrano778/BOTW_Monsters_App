@@ -6,6 +6,7 @@ import { getAllMonsters } from "../../redux/actions/monsters";
 import {selectAllMonstersFiltered, isLoadingAllMonsters} from "../../redux/slices/monstersSlice"
 import { useDispatch, useSelector } from "react-redux";
 
+
 // Function that controls all monsters
 const MonstersContainer = () => {
     const dispatch = useDispatch();

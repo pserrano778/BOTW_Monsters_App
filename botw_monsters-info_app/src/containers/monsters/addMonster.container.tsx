@@ -45,11 +45,11 @@ const AddMonsterContainer = () => {
         e.preventDefault();
         // Create monster Object to post it
         const newMonster = {
-            name: monsterDetails.name,
-            image: monsterDetails.image,
-            description: monsterDetails.description,
             locations: monsterDetails.locations,
-            drops: monsterDetails.drops
+            description: monsterDetails.description,
+            drops: monsterDetails.drops,
+            name: monsterDetails.name,
+            image: monsterDetails.image      
         }
 
         // Dispatch addMonster action
