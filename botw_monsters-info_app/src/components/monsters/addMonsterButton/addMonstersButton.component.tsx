@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
-
+import { useTranslation } from 'react-i18next'
 // Props interface
 interface Props {
   onClick: () => void
@@ -8,8 +8,9 @@ interface Props {
 
 const AddMonsterButton: React.FC<Props> = (props) => {
   const { onClick } = props
-
-  return <Button onClick={onClick}>Add Monster</Button>
+  const { t } = useTranslation('common')
+  console.log(t)
+  return <Button onClick={onClick}>{t('MonsterListPage.addMonster')}</Button>
 }
 
 export default AddMonsterButton

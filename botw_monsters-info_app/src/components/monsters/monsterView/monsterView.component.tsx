@@ -1,5 +1,6 @@
 import React from 'react'
 import Figure from 'react-bootstrap/Figure'
+import { useTranslation } from 'react-i18next'
 // Props interface
 interface Props {
   name: string
@@ -15,6 +16,7 @@ const MonsterView: React.FC<Props> = (props) => {
   const description = props.description as string
   const drops = props.drops as []
   const src = props.src as string
+  const { t } = useTranslation('common')
 
   return (
     <div>
@@ -26,9 +28,15 @@ const MonsterView: React.FC<Props> = (props) => {
       </Figure>
       <p>{description}</p>
       {locations && locations.length > 0 && (
-        <p>Locations: {locations.join(', ')}</p>
+        <p>
+          {t('MonsterDetailsPage.locations')}: {locations.join(', ')}
+        </p>
       )}
-      {drops && drops.length > 0 && <p>Drops: {drops.join(', ')}</p>}
+      {drops && drops.length > 0 && (
+        <p>
+          {t('MonsterDetailsPage.drops')}: {drops.join(', ')}
+        </p>
+      )}
     </div>
   )
 }

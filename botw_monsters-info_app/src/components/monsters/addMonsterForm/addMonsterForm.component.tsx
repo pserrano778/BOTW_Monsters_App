@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-
+import { useTranslation } from 'react-i18next'
 // MonsterDetails
 interface MonsterDetails {
   name: string
@@ -27,17 +27,17 @@ interface Props {
 
 const addMonsterFormComponent: React.FC<Props> = (props) => {
   const { value, onChange, onSubmit } = props
-
+  const { t } = useTranslation('common')
   return (
     <Form onSubmit={onSubmit}>
       <Form.Group as={Row}>
         <Form.Label column sm={2}>
-          Name
+          {t('AddMonsterPage.name')}
         </Form.Label>
         <Col sm={10}>
           <Form.Control
             type="text"
-            placeholder="Enter monster name"
+            placeholder={t('AddMonsterPage.namePlaceholder')}
             onChange={onChange}
             name="name"
             value={value.name}
@@ -48,12 +48,12 @@ const addMonsterFormComponent: React.FC<Props> = (props) => {
 
       <Form.Group as={Row}>
         <Form.Label column sm={2}>
-          Image
+          {t('AddMonsterPage.image')}
         </Form.Label>
         <Col sm={10}>
           <Form.Control
             type="text"
-            placeholder="Enter monster image"
+            placeholder={t('AddMonsterPage.imagePlaceholder')}
             onChange={onChange}
             name="image"
             value={value.image}
@@ -64,12 +64,12 @@ const addMonsterFormComponent: React.FC<Props> = (props) => {
 
       <Form.Group as={Row}>
         <Form.Label column sm={2}>
-          Description
+          {t('AddMonsterPage.description')}
         </Form.Label>
         <Col sm={10}>
           <Form.Control
             type="text"
-            placeholder="Enter monster description"
+            placeholder={t('AddMonsterPage.descriptionPlaceholder')}
             onChange={onChange}
             name="description"
             value={value.description}
@@ -80,12 +80,12 @@ const addMonsterFormComponent: React.FC<Props> = (props) => {
 
       <Form.Group as={Row}>
         <Form.Label column sm={2}>
-          Locations
+          {t('AddMonsterPage.locations')}
         </Form.Label>
         <Col sm={10}>
           <Form.Control
             type="text"
-            placeholder="Enter monster locations"
+            placeholder={t('AddMonsterPage.locationsPlaceholder')}
             onChange={onChange}
             name="locations"
             value={value.locations}
@@ -96,12 +96,12 @@ const addMonsterFormComponent: React.FC<Props> = (props) => {
 
       <Form.Group as={Row}>
         <Form.Label column sm={2}>
-          Drops
+          {t('AddMonsterPage.drops')}
         </Form.Label>
         <Col sm={10}>
           <Form.Control
             type="text"
-            placeholder="Enter monster drops"
+            placeholder={t('AddMonsterPage.dropsPlaceholder')}
             onChange={onChange}
             name="drops"
             value={value.drops}
@@ -110,7 +110,7 @@ const addMonsterFormComponent: React.FC<Props> = (props) => {
       </Form.Group>
 
       <Button variant="primary" type={'submit'}>
-        Submit
+        {t('Buttons.submit')}
       </Button>
     </Form>
   )
