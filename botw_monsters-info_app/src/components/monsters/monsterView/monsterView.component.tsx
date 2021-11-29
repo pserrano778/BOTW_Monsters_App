@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Figure from 'react-bootstrap/Figure'
 // Props interface
 interface Props {
   name: string
@@ -18,12 +18,12 @@ const MonsterView: React.FC<Props> = (props) => {
 
   return (
     <div>
-      <figure>
-        <figcaption>
+      <Figure>
+        <Figure.Caption>
           <h2>{name}</h2>
-        </figcaption>
-        <img src={src} alt={name} />
-      </figure>
+        </Figure.Caption>
+        <Figure.Image src={src} alt={name} />
+      </Figure>
       <p>{description}</p>
       {locations && locations.length > 0 && (
         <p>Locations: {locations.join(', ')}</p>
