@@ -1,10 +1,10 @@
 import React from 'react'
 import AddMonsterButton from '../../components/monsters/addMonsterButton/addMonstersButton.component'
 import { useNavigate } from 'react-router-dom'
-const AddMonsterButtonContainer = () => {
+const AddMonsterButtonContainer = (): JSX.Element => {
   const navigate = useNavigate()
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     navigate('/addMonster')
   }
 

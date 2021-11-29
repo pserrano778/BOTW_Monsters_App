@@ -12,6 +12,7 @@ export const searchFilterSlice = createSlice({
 
 export const { setSearchFilter, clearSearchFilter } = searchFilterSlice.actions
 
-export const selectSearchFilter = (state: RootState) => state.searchFilter
+export const selectSearchFilter = (state: RootState): string =>
+  state.searchFilter
 
 export default searchFilterSlice.reducer

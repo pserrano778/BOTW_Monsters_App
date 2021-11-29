@@ -4,7 +4,7 @@ import './App.css'
 import Routing from './routing/routing'
 import store from '../src/redux/index'
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <Provider store={store}>

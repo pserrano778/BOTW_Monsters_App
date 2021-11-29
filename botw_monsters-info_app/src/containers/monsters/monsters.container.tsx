@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 
 // Function that controls all monsters
-const MonstersContainer = () => {
+const MonstersContainer = (): JSX.Element => {
   const dispatch = useDispatch()
   const allMonstersFiltered = useSelector(selectAllMonstersFiltered)
 

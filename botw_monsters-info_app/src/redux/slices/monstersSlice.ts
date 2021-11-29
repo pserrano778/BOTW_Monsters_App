@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { MonstersState, Monster } from '../types'
+import { MonstersState, Monster, Monsters } from '../types'
 import { addMonster, getAllMonsters } from '../actions/monsters'
 import { RootState } from '../index'
 import { selectSearchFilter } from './searchFilterSlice'
@@ -25,35 +25,35 @@ export const monstersSlice = createSlice({
       state.isLoading = false
       state.hasError = false
     })
-    builder.addCase(getAllMonsters.rejected, (state, action) => {
+    builder.addCase(getAllMonsters.rejected, (state) => {
       state.isLoading = false
       state.hasError = true
     })
-    builder.addCase(getAllMonsters.pending, (state, action) => {
+    builder.addCase(getAllMonsters.pending, (state) => {
       state.isLoading = true
       state.hasError = false
     })
-    builder.addCase(addMonster.fulfilled, (state, { payload }) => {
+    builder.addCase(addMonster.fulfilled, (state) => {
       state.isSending = false
       state.hasSendingError = false
     })
-    builder.addCase(addMonster.rejected, (state, action) => {
+    builder.addCase(addMonster.rejected, (state) => {
       state.isSending = false
       state.hasSendingError = true
     })
-    builder.addCase(addMonster.pending, (state, action) => {
+    builder.addCase(addMonster.pending, (state) => {
       state.isSending = true
       state.hasSendingError = false
     })
   },
 })
 
-export const selectAllMonsters = (state: RootState) =>
+export const selectAllMonsters = (state: RootState): Monsters =>
   state.allMonsters.monsters
-export const isLoadingAllMonsters = (state: RootState) =>
+export const isLoadingAllMonsters = (state: RootState): boolean =>
   state.allMonsters.isLoading
 
-export const selectAllMonstersFiltered = (state: RootState) => {
+export const selectAllMonstersFiltered = (state: RootState): Monsters => {
   const allMonsters = selectAllMonsters(state)
   const searchFilter = selectSearchFilter(state)
 
@@ -62,8 +62,8 @@ export const selectAllMonstersFiltered = (state: RootState) => {
   )
 }
 
-export const addNewMonster = (state: RootState) => {
-  return null
+export const addNewMonster = (state: RootState): void => {
+  null
 }
 
 export default monstersSlice.reducer

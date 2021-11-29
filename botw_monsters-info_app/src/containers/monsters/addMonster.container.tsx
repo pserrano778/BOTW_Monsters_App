@@ -18,7 +18,7 @@ interface Event {
   target: { name: string; value: string }
 }
 
-const AddMonsterContainer = () => {
+const AddMonsterContainer = (): JSX.Element => {
   const [monsterDetails, setMonsterDetails] = useState<MonsterDetails>({
     name: '',
     image: '',
@@ -31,7 +31,7 @@ const AddMonsterContainer = () => {
   const navigate = useNavigate()
 
   // When there is a change
-  const handleChange = (e: Event) => {
+  const handleChange = (e: Event): void => {
     const { name, value } = e.target
     setMonsterDetails((prev) => ({
       ...prev,
@@ -40,7 +40,7 @@ const AddMonsterContainer = () => {
   }
 
   // When data is submited
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     //Avoid to refresh the page
     e.preventDefault()
     // Create monster Object to post it

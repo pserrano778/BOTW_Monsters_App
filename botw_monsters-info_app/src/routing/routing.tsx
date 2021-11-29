@@ -4,7 +4,7 @@ import MonstersContainer from '../containers/monsters/monsters.container'
 import MonsterDataContainer from '../containers/monsters/monsterData.container'
 import AddMonsterContainer from '../containers/monsters/addMonster.container'
 
-const Routing = () => {
+const Routing = (): JSX.Element => {
   // Routing
   return (
     <div>

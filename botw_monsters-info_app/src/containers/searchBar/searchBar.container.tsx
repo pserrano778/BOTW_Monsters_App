@@ -12,7 +12,7 @@ interface Event {
 }
 
 // Function that Track the filter
-const SearchBarContainer = () => {
+const SearchBarContainer = (): JSX.Element => {
   const dispatch = useDispatch()
   const searchFilter = useSelector(selectSearchFilter)
 

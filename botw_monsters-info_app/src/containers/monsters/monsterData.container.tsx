@@ -9,7 +9,7 @@ import {
   isLoadingMonster,
 } from '../../redux/slices/monsterSlice'
 
-const MonsterDataContainer = () => {
+const MonsterDataContainer = (): JSX.Element => {
   // Get the monster info
   const name = useParams().name as string
   const dispatch = useDispatch()
