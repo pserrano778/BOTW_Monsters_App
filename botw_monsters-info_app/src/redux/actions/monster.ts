@@ -5,7 +5,9 @@ import url from '../serverConnection'
 export const getMonster = createAsyncThunk(
   GET_MONSTER,
   async (name: string) => {
-    const response = await fetch(url + name.replaceAll(' ', '_'))
+    const response = await fetch(
+      url + '/getMonster/' + name.replaceAll(' ', '_')
+    )
     const json = await response.json()
     return json
   }

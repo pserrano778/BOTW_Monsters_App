@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { GET_ALL_MONSTERS, ADD_MONSTER, MonsterDetailsStr } from '../types'
+import url from '../serverConnection'
 
 // Action created with createAsyncThunk that get all the Monsters
 export const getAllMonsters = createAsyncThunk(GET_ALL_MONSTERS, async () => {
-  const response = await fetch('http://192.168.1.39:4000/getAllMonsters')
+  const response = await fetch(url + '/getAllMonsters')
   const json = await response.json()
   return json
 })
@@ -21,10 +22,7 @@ export const addMonster = createAsyncThunk(
       body: new URLSearchParams(monster as MonsterDetailsStr),
     }
 
-    const response = await fetch(
-      'http://192.168.1.39:4000/addMonster',
-      requestOptions
-    )
+    const response = await fetch(url + 'addMonster', requestOptions)
     const json = await response.json()
     return json.data
   }
