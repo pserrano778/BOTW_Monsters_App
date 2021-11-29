@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {RootState} from "../index"
+import { createSlice } from '@reduxjs/toolkit'
+import { RootState } from '../index'
 
 export const searchFilterSlice = createSlice({
-    name: "searchFilter",
-    initialState: "",
-    reducers: {
-        setSearchFilter: (state, action) => (state = action.payload),
-        clearSearchFilter: (state) => (state = "")
-    }
-});
+  name: 'searchFilter',
+  initialState: '',
+  reducers: {
+    setSearchFilter: (state, action) => (state = action.payload),
+    clearSearchFilter: (state) => (state = ''),
+  },
+})
 
-export const { setSearchFilter, clearSearchFilter } = searchFilterSlice.actions;
+export const { setSearchFilter, clearSearchFilter } = searchFilterSlice.actions
 
-export const selectSearchFilter = (state: RootState) => state.searchFilter;
+export const selectSearchFilter = (state: RootState) => state.searchFilter
 
-export default searchFilterSlice.reducer;
+export default searchFilterSlice.reducer

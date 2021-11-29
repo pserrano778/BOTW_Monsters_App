@@ -1,30 +1,30 @@
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-} from "react-router-dom";
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import MonstersContainer from '../containers/monsters/monsters.container'
 import MonsterDataContainer from '../containers/monsters/monsterData.container'
 import AddMonsterContainer from '../containers/monsters/addMonster.container'
 
 const Routing = () => {
-    // Routing
-    return (
-      <div>
-          <Router>
-            <div>
-              <Routes>
-                {/* All monster List route */}
-                <Route path={"/"} element={<MonstersContainer/>}></Route>
-                {/* Specific monster info */}
-                <Route path={"/:name"} element={<MonsterDataContainer/>}></Route>
-                {/* Add a new monster */}
-                <Route path={"/addMonster"} element={<AddMonsterContainer/>}></Route>
-              </Routes>
-            </div>
-          </Router>
-      </div>
-    )
+  // Routing
+  return (
+    <div>
+      <Router>
+        <div>
+          <Routes>
+            {/* All monster List route */}
+            <Route path={'/'} element={<MonstersContainer />}></Route>
+            {/* Specific monster info */}
+            <Route path={'/:name'} element={<MonsterDataContainer />}></Route>
+            {/* Add a new monster */}
+            <Route
+              path={'/addMonster'}
+              element={<AddMonsterContainer />}
+            ></Route>
+          </Routes>
+        </div>
+      </Router>
+    </div>
+  )
 }
 
-export default Routing;
+export default Routing

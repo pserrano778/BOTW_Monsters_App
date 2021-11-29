@@ -1,17 +1,14 @@
-import AddMonsterButton
- from "../../components/monsters/addMonsterButton/addMonstersButton.component";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import AddMonsterButton from '../../components/monsters/addMonsterButton/addMonstersButton.component'
+import { useNavigate } from 'react-router-dom'
 const AddMonsterButtonContainer = () => {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate("/addMonster")
-    }
-    
-    return (
-      <AddMonsterButton onClick={handleClick}/>
-    )
+  const handleClick = () => {
+    navigate('/addMonster')
   }
-  
-  export default AddMonsterButtonContainer;
+
+  return <AddMonsterButton onClick={handleClick} />
+}
+
+export default AddMonsterButtonContainer
