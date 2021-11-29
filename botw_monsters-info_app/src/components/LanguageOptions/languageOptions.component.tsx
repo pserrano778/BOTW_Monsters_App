@@ -21,22 +21,14 @@ const LanguageOptionsComponent: React.FC<Props> = (props) => {
     <div>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-lng">
-          {value}
+          1
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item
-            onClick={handleChange}
-            value="EN"
-            active={value === 'EN'}
-          >
+          <Dropdown.Item onClick={handleChange} value="EN">
             EN
           </Dropdown.Item>
-          <Dropdown.Item
-            onClick={handleChange}
-            value="ES"
-            active={value === 'ES'}
-          >
+          <Dropdown.Item onClick={handleChange} value="ES">
             ES
           </Dropdown.Item>
         </Dropdown.Menu>

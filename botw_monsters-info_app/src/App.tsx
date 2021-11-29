@@ -10,31 +10,24 @@ import common_es from './translation/es.json'
 import LanguageOptionsContainer from './containers/languageOptions/languageOptions.container'
 
 function App(): JSX.Element {
-  const [lng, setLng] = useState('EN')
-
-  useEffect(() => {
-    selectLanguage()
-  }, [])
-  const selectLanguage = () => {
-    i18next.init({
-      lng: lng,
-      resources: {
-        EN: {
-          common: common_en,
-        },
-        ES: {
-          common: common_es,
-        },
+  // Init language package 'EN' default
+  i18next.init({
+    lng: 'EN',
+    resources: {
+      EN: {
+        common: common_en,
       },
-    })
-  }
+      ES: {
+        common: common_es,
+      },
+    },
+  })
 
-  selectLanguage()
   return (
     <div className="App">
       <Provider store={store}>
         <I18nextProvider i18n={i18next}>
-          <LanguageOptionsContainer value={lng} onChange={setLng} />
+          <LanguageOptionsContainer />
           <Routing />
         </I18nextProvider>
       </Provider>
