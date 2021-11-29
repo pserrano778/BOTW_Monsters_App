@@ -9,7 +9,7 @@ interface Props {
 const AddMonsterButton: React.FC<Props> = (props) => {
   const { onClick } = props
   const { t } = useTranslation('common')
-  console.log(t)
+
   return <Button onClick={onClick}>{t('MonsterListPage.addMonster')}</Button>
 }
 

@@ -9,19 +9,14 @@ const Routing = (): JSX.Element => {
   return (
     <div>
       <Router>
-        <div>
-          <Routes>
-            {/* All monster List route */}
-            <Route path={'/'} element={<MonstersContainer />}></Route>
-            {/* Specific monster info */}
-            <Route path={'/:name'} element={<MonsterDataContainer />}></Route>
-            {/* Add a new monster */}
-            <Route
-              path={'/addMonster'}
-              element={<AddMonsterContainer />}
-            ></Route>
-          </Routes>
-        </div>
+        <Routes>
+          {/* All monster List route */}
+          <Route path={'/'} element={<MonstersContainer />}></Route>
+          {/* Specific monster info */}
+          <Route path={'/:name'} element={<MonsterDataContainer />}></Route>
+          {/* Add a new monster */}
+          <Route path={'/addMonster'} element={<AddMonsterContainer />}></Route>
+        </Routes>
       </Router>
     </div>
   )
