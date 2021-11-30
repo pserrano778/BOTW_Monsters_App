@@ -51,5 +51,7 @@ export const selectMonster = (state: RootState): MonsterDetails =>
 export const { clearMonster } = monsterSlice.actions
 export const isLoadingMonster = (state: RootState): boolean =>
   state.monsterDetails.isLoading
+export const hasError = (state: RootState): boolean =>
+  state.monsterDetails.hasError
 
 export default monsterSlice.reducer

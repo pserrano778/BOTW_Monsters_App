@@ -52,6 +52,8 @@ export const selectAllMonsters = (state: RootState): Monsters =>
   state.allMonsters.monsters
 export const isLoadingAllMonsters = (state: RootState): boolean =>
   state.allMonsters.isLoading
+export const hasError = (state: RootState): boolean =>
+  state.allMonsters.hasError
 
 export const selectAllMonstersFiltered = (state: RootState): Monsters => {
   const allMonsters = selectAllMonsters(state)

@@ -21,7 +21,7 @@ const LanguageOptionsComponent: React.FC<Props> = (props) => {
     <div>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-lng">
-          1
+          {value}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>

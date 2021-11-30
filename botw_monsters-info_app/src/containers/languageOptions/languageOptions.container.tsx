@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import LanguageOptionsComponent from '../../components/LanguageOptions/languageOptions.component'
 import i18next from 'i18next'
-// Props interface
-interface Props {
-  value: string
-  onChange: (value: string) => void
-}
-
-// Event interface
-interface Event {
-  target: { value: string }
-}
 
 const LanguageOptionsContainer: React.FC = () => {
   // Use state to track current language

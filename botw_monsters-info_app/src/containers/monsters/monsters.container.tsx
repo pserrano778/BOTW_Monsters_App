@@ -6,6 +6,7 @@ import { getAllMonsters } from '../../redux/actions/monsters'
 import {
   selectAllMonstersFiltered,
   isLoadingAllMonsters,
+  hasError,
 } from '../../redux/slices/monstersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -21,8 +22,11 @@ const MonstersContainer = (): JSX.Element => {
 
   // Check if data has been loaded
   const isLoading = useSelector(isLoadingAllMonsters)
+  const error = useSelector(hasError)
   if (isLoading && allMonstersFiltered.length === 0) {
     return <p>Loading Data</p>
+  } else if (error) {
+    return <p>Error Loading Data</p>
   }
 
   return (

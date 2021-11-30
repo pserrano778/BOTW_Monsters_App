@@ -7,6 +7,7 @@ import {
   selectMonster,
   clearMonster,
   isLoadingMonster,
+  hasError,
 } from '../../redux/slices/monsterSlice'
 
 const MonsterDataContainer = (): JSX.Element => {
@@ -27,8 +28,11 @@ const MonsterDataContainer = (): JSX.Element => {
 
   // Check if data has been loaded
   const isLoading = useSelector(isLoadingMonster)
+  const error = useSelector(hasError)
   if (isLoading) {
     return <p>Loading Data</p>
+  } else if (error) {
+    return <p>Error Loading Data</p>
   }
 
   return (
