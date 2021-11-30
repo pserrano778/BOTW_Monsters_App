@@ -1,4 +1,4 @@
-import reducer, { selectMonster, clearMonster } from '../../../src/redux/slices/monsterSlice'
+import reducer, { clearMonster } from '../../../src/redux/slices/monsterSlice'
 
 import {MonsterDetails, MonsterState} from '../../../src/redux/types'
 

@@ -65,8 +65,7 @@ export const selectAllMonstersFiltered = (state: RootState): Monsters => {
   )
 }
 
-export const addNewMonster = (state: RootState): void => {
-  null
-}
+export const addNewMonster = (state: RootState): Monsters =>
+  selectAllMonstersFiltered(state)
 
 export default monstersSlice.reducer
