@@ -47,6 +47,7 @@ app.post('/addMonster', (req, res) => {
   }
 
   const newMonster = {
+    _id: req.body.name.toLowerCase().replaceAll(" ", "_"),
     name: req.body.name,
     image: req.body.image,
     description: req.body.description,
@@ -56,8 +57,15 @@ app.post('/addMonster', (req, res) => {
 
   checkDBConnection();
 
-  monstersCollection.insertOne(newMonster);
-  res.sendStatus(200);
+  result = monstersCollection.insertOne((newMonster), (error, result) => {
+    if (error) {
+      console.log(error)
+      return res.status(500).send(error);
+    }
+    else{
+      return res.status(200).send({name:newMonster.name, image:newMonster.image});
+    }
+  });
 });
 
 // Get all monsters Endpoint
@@ -68,15 +76,15 @@ app.get('/getAllMonsters', (req, res) => {
       return res.status(500).send(error);
     }
 
-    return res.status(200).send(result);
+    return res.status(200).send(result.map(monster => ({name:monster.name, image:monster.image})));
   });
 });
 
 // Get monster details Endpoint
 app.get('/getMonster/*', (req, res) => {
-  const monster = req.url.replace('/getMonster/', '').replaceAll('_', ' ');
+  const monster = req.url.replace('/getMonster/', '').toLowerCase();
   checkDBConnection();
-  monstersCollection.findOne({ name: monster }, (error, result) => {
+  monstersCollection.findOne({ _id: monster }, (error, result) => {
     if (error) {
       return res.status(500).send(error);
     }

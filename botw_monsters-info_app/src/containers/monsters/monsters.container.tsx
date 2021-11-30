@@ -9,12 +9,13 @@ import {
   hasError,
 } from '../../redux/slices/monstersSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // Function that controls all monsters
 const MonstersContainer = (): JSX.Element => {
   const dispatch = useDispatch()
   const allMonstersFiltered = useSelector(selectAllMonstersFiltered)
-
+  const { t } = useTranslation('common')
   // Use effect to get allMonster the first time
   useEffect(() => {
     dispatch(getAllMonsters())
@@ -24,9 +25,9 @@ const MonstersContainer = (): JSX.Element => {
   const isLoading = useSelector(isLoadingAllMonsters)
   const error = useSelector(hasError)
   if (isLoading && allMonstersFiltered.length === 0) {
-    return <p>Loading Data</p>
+    return <p>{t('LoadData.loading')}</p>
   } else if (error) {
-    return <p>Error Loading Data</p>
+    return <p>{t('LoadData.loadingError')}</p>
   }
 
   return (

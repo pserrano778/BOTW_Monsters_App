@@ -9,13 +9,14 @@ import {
   isLoadingMonster,
   hasError,
 } from '../../redux/slices/monsterSlice'
+import { useTranslation } from 'react-i18next'
 
 const MonsterDataContainer = (): JSX.Element => {
   // Get the monster info
   const name = useParams().name as string
   const dispatch = useDispatch()
   const monsterDetails = useSelector(selectMonster)
-
+  const { t } = useTranslation('common')
   // Use effect to get the info
   useEffect(() => {
     //Dispatch the action
@@ -30,9 +31,9 @@ const MonsterDataContainer = (): JSX.Element => {
   const isLoading = useSelector(isLoadingMonster)
   const error = useSelector(hasError)
   if (isLoading) {
-    return <p>Loading Data</p>
+    return <p>{t('LoadData.loading')}</p>
   } else if (error) {
-    return <p>Error Loading Data</p>
+    return <p>{t('LoadData.loadingError')}</p>
   }
 
   return (

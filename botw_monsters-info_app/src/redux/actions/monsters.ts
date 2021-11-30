@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import thunkApi from 'redux-thunk'
 import { GET_ALL_MONSTERS, ADD_MONSTER, MonsterDetailsStr } from '../types'
 import url from '../serverConnection'
 
@@ -12,7 +13,7 @@ export const getAllMonsters = createAsyncThunk(GET_ALL_MONSTERS, async () => {
 // Action created with createAsyncThunk that post a new monster
 export const addMonster = createAsyncThunk(
   ADD_MONSTER,
-  async (monster: MonsterDetailsStr) => {
+  async (monster: MonsterDetailsStr, thunkApi) => {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -21,9 +22,13 @@ export const addMonster = createAsyncThunk(
       },
       body: new URLSearchParams(monster as MonsterDetailsStr),
     }
-
-    const response = await fetch(url + 'addMonster', requestOptions)
+    const response = await fetch(url + '/addMonster', requestOptions)
     const json = await response.json()
-    return json.data
+    // Duplicated Key
+
+    if (json.code && json.code === 11000) {
+      return thunkApi.rejectWithValue('error')
+    }
+    return json
   }
 )

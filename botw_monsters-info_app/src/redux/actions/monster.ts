@@ -8,7 +8,6 @@ export const getMonster = createAsyncThunk(
     const response = await fetch(
       url + '/getMonster/' + name.replaceAll(' ', '_')
     )
-
     const json = await response.json()
     return json
   }

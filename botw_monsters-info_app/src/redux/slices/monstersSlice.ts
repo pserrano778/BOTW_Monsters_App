@@ -33,7 +33,8 @@ export const monstersSlice = createSlice({
       state.isLoading = true
       state.hasError = false
     })
-    builder.addCase(addMonster.fulfilled, (state) => {
+    builder.addCase(addMonster.fulfilled, (state, { payload }) => {
+      state.monsters = [...state.monsters, payload]
       state.isSending = false
       state.hasSendingError = false
     })

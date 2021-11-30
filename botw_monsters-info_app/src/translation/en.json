@@ -14,7 +14,8 @@
   },
   "SearchBar": {
       "placeholder": "Type to filter by name",
-      "message": "Filter by name"
+      "message": "Filter by name",
+      "noMatches": "There is no monster that matches the filter"
   },
   "AddMonsterPage": {
     "name": "Name",
@@ -27,5 +28,9 @@
     "descriptionPlaceholder": "Enter monster description",
     "locationsPlaceholder": "Enter monster locations",
     "dropsPlaceholder": "Enter monster drops"
+  },
+  "LoadData": {
+    "loadingError": "Error loading data",
+    "loading": "Loading data"
   }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import MonsterPreview from '../monsterPreview/monsterPreview.component'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import { useTranslation } from 'react-i18next'
 // Monster interface
 interface Monster {
   name: string
@@ -16,9 +17,9 @@ interface Props {
 // Function that controls all monsters
 const MonstersList: React.FC<Props> = (props) => {
   const { monsters } = props
-
+  const { t } = useTranslation('common')
   if (!monsters || monsters.length === 0) {
-    return <p>There is no monster that matches the filter.</p>
+    return <p>{t('SearchBar.noMatches')}</p>
   }
   return (
     <Container>

@@ -14,7 +14,8 @@
   },
   "SearchBar": {
     "placeholder": "Escribe para filtrar por nombre",
-    "message": "Filtrar por nombre"
+    "message": "Filtrar por nombre",
+    "noMatches": "No se ha encontrado ningún monstruo utilizando ese filtro"
   },
   "AddMonsterPage": {
     "name": "Nombre",
@@ -27,5 +28,9 @@
     "descriptionPlaceholder": "Introduce la descripción del monstruo",
     "locationsPlaceholder": "Introduce la localización el monstruo",
     "dropsPlaceholder": "Introduce el botín del monstruo"
+  },
+  "LoadData": {
+    "loadingError": "Error al tratar de cargar los datos",
+    "loading": "Cargando datos"
   }
 }
