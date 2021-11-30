@@ -59,7 +59,7 @@ app.post('/addMonster', (req, res) => {
 
   result = monstersCollection.insertOne((newMonster), (error, result) => {
     if (error) {
-      console.log(error)
+
       return res.status(500).send(error);
     }
     else{

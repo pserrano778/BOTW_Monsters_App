@@ -1,4 +1,4 @@
-import reducer, { selectMonster} from '../../../src/redux/slices/monsterSlice'
+import reducer from '../../../src/redux/slices/monsterSlice'
 
 import {MonsterState} from '../../../src/redux/types'
 
@@ -15,11 +15,7 @@ const initialState = {
 } as MonsterState
 
 test('should return initial state', () => {
-    expect(reducer(undefined, {})).toEqual([
-        {
-            monster: {},
-            isLoading: false,
-            hasError: false
-        }
+    expect(reducer(undefined, undefined)).toEqual([
+        initialState
     ])
 })
