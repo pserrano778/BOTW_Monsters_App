@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import thunkApi from 'redux-thunk'
 import { GET_ALL_MONSTERS, ADD_MONSTER, MonsterDetailsStr } from '../types'
 import url from '../serverConnection'
 
